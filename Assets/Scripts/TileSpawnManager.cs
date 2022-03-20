@@ -5,9 +5,8 @@ using UnityEngine;
 public class TileSpawnManager : MonoBehaviour
 {
     public GameObject currentTile;
-    //public GameObject rightTile;
-    //public GameObject forwardTile;
-
+    public GameObject rightTile;
+    public GameObject forwardTile;
     public GameObject[] tilesPrefab;
 
 
@@ -17,7 +16,7 @@ public class TileSpawnManager : MonoBehaviour
         for (int i = 0; i < 30; i++)
         {
             int k = Random.Range(0, 2);
-
+            Instantiate(tilesPrefab[k], currentTile.transform.GetChild(k).position, Quaternion.identity);
             currentTile = Instantiate(tilesPrefab[k], currentTile.transform.GetChild(k).position, Quaternion.identity);
         }
     }
