@@ -14,7 +14,6 @@ public class TileSpawnManager : MonoBehaviour
     Stack<GameObject> forwardTile = new Stack<GameObject>();
      //static TileSpawnManager Instance { get => instance;  }
 
-
     //private void Awake()
     //{
     //    if (instance == null)
@@ -36,14 +35,8 @@ public class TileSpawnManager : MonoBehaviour
         
     void Start()
     {
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    //SpawnTile();
-        //    //CreateTile(1);
-
-        //}
-        //SpawnTile();
-        for (int i = 0; i < 10; i++)
+        CreateTile(50);
+        for (int i = 0; i < 20; i++)
         {
             SpawnTile();
 
@@ -52,7 +45,7 @@ public class TileSpawnManager : MonoBehaviour
 
 
     public void SpawnTile()
-    {/*
+    { /*
         int index = Random.Range(0, 10);
         if (index == 3)
         {
@@ -89,13 +82,12 @@ public class TileSpawnManager : MonoBehaviour
     {
         for (int i = 0; i < value; i++)
         {
-            //SpawnTile();
-            //CreateTile();
             rightTile.Push(Instantiate(tilesPrefab[1]));
             tilesPrefab[1].SetActive(false);
             forwardTile.Push(Instantiate(tilesPrefab[0]));
-            tilesPrefab[0].SetActive(false);           
-
+            tilesPrefab[0].SetActive(false);
+            rightTile.Peek().name = "RightTile";
+            forwardTile.Peek().name = "ForwardTile";
         }
     }
     public void BackToRightPool(GameObject obj)
@@ -107,10 +99,11 @@ public class TileSpawnManager : MonoBehaviour
     }
     public void BackToForwardPool(GameObject obj)
     {
-       // obj.GetComponent<Rigidbody>().isKinematic = true;
-
+        //obj.GetComponent<Rigidbody>().isKinematic = true;
         forwardTile.Push(obj);
         forwardTile.Peek().SetActive(false);
         //obj.SetActive(false);
     }
+
+ 
 }
